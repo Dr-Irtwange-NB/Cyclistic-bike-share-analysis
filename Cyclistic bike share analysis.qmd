@@ -1,0 +1,878 @@
+---
+title: "Cyclistic bike share analysis"
+author: "Dr. Irtwange N.B"
+date: "`r Sys.Date()`"
+format: revealjs
+editor: visual
+---
+
+# Contents
+
+1.  About Cyclistic
+2.  Business task
+3.  Analysis
+4.  Conclusion
+5.  Recommendations
+
+# About Cyclistic {#sec-about-cyclistic}
+
+-   **Founded in 2016**, Cyclistic offers a bike-share program in **Chicago** with **5,824 geotracked bikes** across **692 stations**.
+
+-   Riders can unlock bikes from one station and return them to another anytime.
+
+-   **Pricing plans**: Single-ride, full-day passes (**casual riders**) & annual memberships (**Cyclistic members**).
+
+# Business tasks {#sec-business-tasks}
+
+1.  How do annual members and casual riders use Cyclistic bikes differently?
+
+2.  Why would casual riders buy Cyclistic annual memberships?
+
+3.  How can Cyclistic use digital media to influence casual riders to become members?
+
+# Analysis {#sec-analysis}
+
+# **General distribution** {#sec-cyclistic-customer-insights}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740678547509' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'><img alt='Population of Cyclistic bike customers and bike types'                  src='https://public.tableau.com/static/images/An/AnalysisonallCyclisticbikeusers/PopulationofCyclisticbikescustomerandbiketypes/1_rss.png'                  style='border: none;' /></a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisonallCyclisticbikeusers/PopulationofCyclisticbikescustomerandbiketypes' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisonallCyclisticbikeusers/PopulationofCyclisticbikescustomerandbiketypes/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740678547509');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>           
+```
+
+:::{.notes}
+
+-    **Customer Distribution**:
+
+    1.  **61%** are **Members**
+
+    2.  **39%** are **Casual Riders**
+
+-   **Bike Type Popularity**:
+
+    1.  **Classic Bike** – **66.7%** (Most popular)
+
+    2.  **Electric Bike** – **32.3%**
+
+    3.  **Electric Scooter** – **1.0%** (Least used)
+
+:::
+
+# **General trip duration** {#sec-general-trip-duration}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740761558463' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'><img alt='Average ride durations for all Cyclistic bike users'                  src='https://public.tableau.com/static/images/An/AnalysisofAverageridedurationsofallCyclisticbikeusers/AverageridedurationsforallCyclisticbikesusers/1_rss.png'                  style='border: none' /></a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofAverageridedurationsofallCyclisticbikeusers/AverageridedurationsforallCyclisticbikesusers' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofAverageridedurationsofallCyclisticbikeusers/AverageridedurationsforallCyclisticbikesusers/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740761558463');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure it adapts to different screen sizes     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Average duration:** **19.73 mins** – Most trips are short.
+
+-   **Members:** Short, consistent trips for commuting or quick errands.
+
+-   **Casual Users:** Longer trips for leisure or recreation.
+
+-   **Casual Users (39%)** **of Cyclistic users, with longer duration than the Member type**: reinforcing their focus on leisure or recreation.
+
+:::
+
+# Weekly Customers trend {#sec-weekly-ride-patterns-customers}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740759980833' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'><img alt='Analysis of Cyclistic users weekly rides 1'                  src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides1/1_rss.png'                  style='border: none;' /></a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740759980833');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak Days:** Saturday (weekend), Wednesday & Thursday (weekdays).
+
+-   **Low Rides:** Monday & Tuesday – likely due to a slow start to the week.
+
+-   **Member Customers:** Dominate weekdays (Monday–Friday).
+
+-   **Casual Users:** Dominate weekends (Saturday & Sunday).
+
+:::
+
+# Weekly Customer's Durations {#sec-weekly-ride-patterns-durations}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740755786674' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'><img alt='Analysis of Cyclistic user weekly ride durations 1'                  src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations1/1_rss.png'                  style='border: none;' /></a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740755786674');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Trip Duration:** Longer on weekends indicating recreational use
+-   **Longest Trips:** **Sunday & Saturday** – Leisure-focused, mostly by Casual users.
+-   **Casual Customers:** Highest duration on **weekends** (recreational use).
+-   **Member Customers:** Consistent duration on **weekdays**, slight increase on weekends (commuting).
+
+:::
+
+# Weekly bike trend {#sec-weekly-ride-patterns---bike-type}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740757393668' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic users weekly rides 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyrides1/AnalysisofCyclisticusersweeklyrides2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740757393668');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Classic Bikes:** Most used, peak on **Saturday** (leisure trips).
+
+-   **Electric Bikes:** Moderate use, peak on **Wednesday** (commuting).
+
+-   **Scooters:** Least used, possibly a niche option.
+
+-   **Member Customers:** More rides **on weekdays**, fewer on weekends.
+
+-   **Casual Users:** More rides **on weekends**, fewer on weekdays.
+
+:::
+
+# Weekly bike's durations {#sec-weekly-ride-duration---bike-type}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740754690564' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user&#39;s weekly ride durations 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridedurations/AnalysisofCyclisticusersweeklyridedurations2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740754690564');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Classic Bikes:** Longest trips, peak on **weekends** (leisure).
+
+-   **Electric Bikes:** Moderate duration, steady on weekdays, slight **weekend peak** (commuting).
+
+-   **Scooters:** Shortest trips, slightly longer on **weekends**, very short on **Tuesdays & Thursdays** (quick trips).
+
+-   **Casual Users:** Longer trips on **all bike types**, especially weekends.
+
+-   **Member Customers:** Consistent **short trips**, slight weekend increase.
+
+:::
+
+# Chicago's seasonal pattern {#sec-chicagos-seasonal-pattern}
+
+------------------------------------------------------------------------
+
+```{r Seasons of Chicago, echo=FALSE, message=FALSE, warning=FALSE}
+# Create a data frame with months, temperatures, and seasons
+data <- data.frame(
+  Month = c("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"),
+  Temperature = c(30, 34, 42, 53, 63, 73, 79, 77, 68, 56, 45, 34),
+  Season = c("Winter", "Winter", "Spring", "Spring", "Spring", "Summer",
+             "Summer", "Summer", "Autumn", "Autumn", "Autumn", "Winter")
+)
+
+# Convert Month to an ordered factor to ensure calendar order
+data$Month <- factor(data$Month, levels = c("January", "February", "March", "April", "May", "June",
+                                            "July", "August", "September", "October", "November", "December"))
+# Define season colors
+season_colors <- c("Winter" = "blue", "Spring" = "green", "Summer" = "red", "Autumn" = "orange")
+
+# Create the bar chart
+ggplot(data, aes(x = Month, y = Temperature, fill = Season)) +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_manual(values = season_colors) +
+  theme_minimal() +
+  labs(
+    title = "Seasonal Temperature Changes by Month in Chicago",
+    x = "Months",
+    y = "Average Temperature (°F)",
+    fill = "Season"
+  ) +
+  theme(
+       axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 14)
+  )
+```
+
+:::{.notes}
+
+-   **Winter (Dec–Feb):** Cold, freezing temps, snowfall, shorter days.
+
+-   **Spring (Mar–May):** Warmer temps, frequent rain, longer daylight.
+
+-   **Summer (Jun–Aug):** Hot & humid, thunderstorms, longest days.
+
+-   **Fall (Sept–Nov):** Cooling temps, crisp air, occasional rain, shorter days.
+
+:::
+
+# Seasonal Customers Trends {#sec-seasonal-ride-trends-customers}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740758068024' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of monthly Cyclistic rides 1'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides1/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740758068024');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak Rides:** **Summer & Autumn** – Favorable weather boosts rides.
+
+-   **Lowest Rides:** **Winter** – Seasonal drop due to Chicago’s climate.
+
+-   **Casual Users:** Sharp increase in **warmer months**, steep decline in **winter** (leisure use).
+
+-   **Member Customers:** Steady rides **year-round** (commuting).
+
+:::
+
+# Seasonal Customer's Durations {#sec-seasonal-ride-trends-durations}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740759055547' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user monthly ride durations 1'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations1/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740759055547');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Longest Trips:** **Summer & Late Spring** (warmer months).
+
+-   **Shortest Trips:** **Winter** (cold weather impact).
+
+-   **Casual Users:** Longer trips in **warm months**, shortest in **winter** (leisure use).
+
+-   **Member Customers:** Steady trip duration **year-round**, slight increase in **warmer months** (commuting).
+
+:::
+
+# Seasonal Bike Trends {#sec-seasonal-bike-trends}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740759339824' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of monthly Cyclistic rides 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersMonthlyrides/AnalysisofmonthlyCyclisticrides2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740759339824');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Classic Bikes:** Most used, peak in **warmer months**, decline in **winter** (leisure use).
+
+-   **Electric Bikes:** Moderate increase in **warm months** (commuting use).
+
+-   **Scooters:** Rented only in **August & September** (seasonal, niche, or limited availability).
+
+-   **Casual Users:** More rides in **warm months**, fewer in **winter** (recreational use).
+
+-   **Member Customers:** Steady **year-round** use, slight rise in **warm months** (commuting)
+
+:::
+
+# Seasonal Bike Duration {#sec-seasonal-bike-duration}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740759654192' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user&#39;s monthly ride durations 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersmonthlyridedurations/AnalysisofCyclisticusersmonthlyridedurations2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740759654192');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Classic Bikes:** Longest trips, peak in **warm months**, decline in **winter** (leisure use).
+
+-   **Electric Bikes:** Moderate, consistent, slightly longer in **warm months** (commuting use).
+
+-   **Scooters:** Used only in **August & September**, longer trips in **August** (possible promotion, niche use).
+
+-   **Casual Users:** Longer trips in **warm months**, shorter in **winter** (recreational use).
+
+-   **Member Customers:** Short, steady trips **year-round**, slight increase in **warm months** (commuting).
+
+:::
+
+# Seasonal Ride Trends by Week {#sec-weekly-ride-trends-by-season}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740762983993' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of the Week of each month Cyclistic user&#39;s ride 1'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride1/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740762983993');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak Rides:** **Summer & Autumn**, drop in **Winter** (weather impact).
+
+-   **Casual Users:** Dominate **weekends**, ride more in **warm months**, steep decline in **cold months** (leisure use).
+
+-   **Member Customers:** Primary riders, steady **year-round** with minimal weather impact (commuting use).
+
+:::
+
+# Seasonal Ride Duration by Week {#sec-weekly-ride-durations-by-season}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740763968782' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user&#39;s Week of each month ride durations 1'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations1/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations1' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations1/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740763968782');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Longest Rides:** **May (peak), July, June, April, August**, mostly on **weekends (24+ mins, leisure use).**
+
+-   **Shortest Rides:** **Winter (Oct–Jan),** especially weekdays (**\<15 mins, commuting focus**).
+
+-   **Weekdays:** **Shorter rides (\<20 mins)**, indicating functional commuting.
+
+#### **User Behavior:** {#sec-user-behavior}
+
+-   **Casual Users:** **Longest rides in warm months (Apr–Aug, weekends), shortest in winter (Oct–Jan).**
+
+-   **Member Users:** **Short, stable rides year-round, minor peaks on weekends.**
+
+-   **Winter months see the shortest rides, especially midweek.**
+
+:::
+
+# Seasonal Bike Trends by Week {#sec-weekly-bike-trends-by-season}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740764294066' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of the Week of each month Cyclistic user&#39;s ride 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthride/AnalysisoftheWeekofeachmonthCyclisticusersride2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740764294066');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Classic Bikes:** Most popular, peak in **warmer months (Jul–Aug, weekends)** for leisure & recreation.
+
+    -   **Highest ride count:** **August (Saturday), July (Saturday).**
+
+    -   **Weekdays (Wed–Thu):** Moderate usage, likely for commutes.
+
+-   **Electric Bikes:** Moderate, **higher in warm months (Jun–Oct)** for commuting.
+
+    -   **Peak days:** **August (Friday, Saturday).**
+
+    -   **Weekdays (Wed–Thu):** Steady use, likely commuter-driven.
+
+-   **Electric Scooters:** Least used, seen **only in August & September**, possibly seasonal or promotional.
+
+    -   **Peak:** **September (Thursday), lowest in August (Saturday).**
+
+#### **User Behavior:** {#sec-user-behavior1}
+
+-   **Casual Riders:**
+
+    -   **Prefer Classic Bikes (weekends, summer).**
+
+    -   **Highest ridership:** **August (Saturday).**
+
+    -   **Electric bikes used mainly in spring/summer weekends.**
+
+    -   **Scooters used in fall (September, Sunday).**
+
+-   **Member Riders:**
+
+    -   **Use Classic Bikes mainly on weekdays, peak in July (Wednesday), May (Wednesday).**
+
+    -   **Electric Bikes popular for commuting, peak in October (Wednesday).**
+
+    -   **Minimal scooter use, peak in September (Thursday).**
+
+    -   **Year-round riders, slightly more in warm months.**
+
+:::
+
+# Seasonal Bike Duration by Week
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740765093904' style='width: 80%; height: 600px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user&#39;s Week of each month ride durations 2'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations2/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations2' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersWeekofeachmonthridedurations/AnalysisofCyclisticusersWeekofeachmonthridedurations2/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740765093904');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "600px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+### **Bike Type & Trip Duration Trends**
+
+-   **Classic Bikes:** Longer trips on **weekends**, stable duration on **weekdays** (commuting). Peak usage in **spring & summer (Apr–Jul).**
+
+-   **Electric Bikes:** **Moderate, consistent duration year-round**, slight peak in **summer (May–Jul).** Preferred for **shorter, utility-driven trips.**
+
+-   **Electric Scooters:** **Limited data (Aug & Sept),** likely **seasonal, promotional, or niche.** Moderate use on **weekends, lower on weekdays.**
+
+### **Customer Preferences:**
+
+-   **Casual Riders:** Longer trips, especially on **weekends & in warmer months.**
+
+-   **Member Riders:** **Shorter, steady** trip duration, with a slight rise in **August (scooters over e-bikes).**
+
+-   **Classic bikes preferred for longer trips, e-bikes for moderate trips, scooters for shortest.**
+
+:::
+
+# Hourly Trends in Ridership & Ride Duration {#sec-hourly-trends-in-ridership--ride-duration}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740765658366' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic rides and ride duration based on hourly usage patterns'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns/AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns/AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns/AnalysisofCyclisticridesandridedurationbasedonhourlyusagepatterns/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740765658366');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+#### **Peak Hours & Ridership Trends**
+
+-   **Morning Peak (6-8AM):** High ridership, short trip duration (commutes).
+
+-   **Evening Peak (4-6PM):** Highest ridership at **5PM**, indicating commutes & leisure.
+
+-   **Lowest Ridership (4AM):** Likely rest period, minimal activity.
+
+#### **Ride Duration Trends**
+
+-   **Longest rides (10-11AM):** Leisure or errands during off-peak hours.
+
+-   **Shortest rides (6-8AM & 5-7PM):** Work commutes, time-sensitive trips.
+
+-   **Evening (8-11PM):** Declining ridership, steady trip duration (social, leisure).
+
+-   **Late Night (12-5AM):** Low ridership, longer trips (leisure or planned travel).
+
+#### **Customer Patterns**
+
+-   **Casual Riders:** Longer rides, peak at **10AM** (leisure-focused). Lower ridership with long duration at **11PM-3AM** (late-night outings).
+
+-   **Member Riders:** Higher ridership, peak at **5PM**. Shorter, efficient trips (commuting).
+
+**Key Insight:** **Inverse relationship** between ridership & trip duration - high ride counts coincide with short duration (e.g., rush hours), while low ride counts align with longer duration (e.g., leisure hours).
+
+:::
+
+# Hourly Trends in weekly Ridership {#sec-hourly-trends-in-weekly-ridership-}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740766387265' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic users weekly rides'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyrides/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyrides' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyrides/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740766387265');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak:** Wednesday **5PM**, **Lowest:** Tuesday **3AM**
+
+-   **Weekdays:** Peaks at **8AM & 5PM** (commuting)
+
+-   **Weekends:** Peaks **11AM-3PM** (leisure/recreation)
+
+-   **Late Night (12-5AM):** More weekend rides (social); minimal weekday rides (commuting)
+
+-   **Morning Rush (6-9AM):** High weekday rides (8AM peak, short trips); fewer but longer weekend rides
+
+-   **Midday (12-3PM):** Stable weekday rides (errands); higher weekend rides (recreation)
+
+-   **Evening Rush (4-6PM):** Peak weekday ridership (commuting); gradual weekend decline (social activities)
+
+-   **Night (7-11PM):** Steep weekday decline (short commutes); longer weekend trips (leisure)
+
+#### **Customer Type Ridership**
+
+-   **Casual Riders:** Peak **Saturday 3PM**, lowest **Tuesday 3AM** (weekend focus)
+
+-   **Member Riders:** Peak **Wednesday 5PM**, lowest **Tuesday 3AM** (commuting-driven)
+
+:::
+
+# Hourly Trends in weekly Durations {#sec-hourly-trends-in-weekly-durations}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740766523909' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic users weekly rides durations'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyridesdurations/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyridesdurations' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweeklyridesandridesdurationsbasedonhourlyusuagepatterns/AnalysisofCyclisticusersweeklyridesdurations/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740766523909');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Longest:** Tuesday **3AM**, **Shortest:** Monday **6AM**
+
+-   **Weekdays:** Shortest during rush hours (commuting)
+
+-   **Weekends:** Longer rides, peaking mid-morning & midday (leisure)
+
+-   **Late Night (12-5AM):** Longer durations on weekends (social trips)
+
+-   **Morning Rush (6-9AM):** Short weekday trips (commuting), longer weekend rides
+
+-   **Midday (12-3PM):** Short weekday rides (errands), longer weekend rides (recreation)
+
+-   **Evening Rush (4-6PM):** Shortest weekday trips (commuting)
+
+-   **Night (7-11PM):** Short weekday rides; longer weekend trips (social)
+
+#### **Customer Type Duration**
+
+-   **Casual Riders:** Longest **Sunday 6AM**, shortest **Tuesday 5AM** (leisure trips)
+
+-   **Member Riders:** Longest **Tuesday 3AM**, shortest **Monday 6AM** (efficient, commute-focused)
+
+:::
+
+# Hourly Trends in Monthly Ridership {#sec-hourly-trends-in-monthly-ridership}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740766756015' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user monthly rides by time'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersmonthlyridesbytime/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersmonthlyridesbytime' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersmonthlyridesbytime/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740766756015');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak:** July **5PM**, **Lowest:** January **3AM**
+
+-   **Seasonal Patterns:**
+
+    -   **High ridership:** Late spring (**May**), summer (**June-August**), autumn (**September-October**) (4-6PM)
+
+    -   **Low ridership:** Winter (**December-February**), early spring (**March-April**), late autumn (**November**) (2-4AM)
+
+-   **Hourly Trends:**
+
+    -   All months peak at **8AM, 12PM, 5PM**
+
+    -   **Winter:** Lower ridership due to harsh weather
+
+    -   **Spring:** Gradual increase, peak in **May**
+
+    -   **Summer:** Highest activity, especially midday and evenings
+
+    -   **Autumn:** Declining but still high in September-October
+
+#### **Customer Type Ridership**
+
+-   **Casual Riders:**
+
+    -   Highest: **Saturday 3PM**, Lowest: **Tuesday 3AM**
+
+    -   Dominate **midday (10AM-3PM) in summer**, use bikes for leisure
+
+    -   Low winter ridership but dominates late-night rides
+
+-   **Member Riders:**
+
+    -   Highest: **Wednesday 5PM**, Lowest: **Tuesday 3AM**
+
+    -   Dominate **year-round, especially commuting hours (8AM, 5PM)**
+
+    -   Core commuting base remains stable despite weather changes
+
+:::
+
+# Hourly Trends in Monthly Durations {#sec-hourly-trends-in-monthly-durations}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740766971629' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user average monthly ride duration by time'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersaveragemonthlyridedurationbytime/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersaveragemonthlyridedurationbytime' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersaveragemonthlyridesandridedurationbasedonhourlyusuagepattern/AnalysisofCyclisticusersaveragemonthlyridedurationbytime/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740766971629');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Longest:** June **4AM**, **Shortest:** March **6AM**
+
+-   **Seasonal Patterns:**
+
+    -   **Winter:** Longer rides at odd hours (few alternatives)
+
+    -   **Spring:** Longer early rides (slow pace, reacclimating)
+
+    -   **Summer:** Steady durations (\~15-18 min) except early mornings (\~20-25 min)
+
+    -   **Autumn:** Shorter rides in colder months (**November**)
+
+#### **Customer Type Duration**
+
+-   **Casual Riders:**
+
+    -   Longest: **Sunday 6AM**, Shortest: **Tuesday 5AM**
+
+    -   Dominate trip durations **year-round**, especially in **warmer months**
+
+    -   Indicate leisure/recreational usage
+
+-   **Member Riders:**
+
+    -   Longest: **Tuesday 3AM**, Shortest: **Monday 6AM**
+
+    -   Shorter, consistent durations focused on **commuting**
+
+    -   Dominate winter durations at **specific early hours (December 5AM, January 4-6AM, February 4AM)**
+
+:::
+
+# Weekly and Hourly Trends in Monthly Ridership {#sec-weekly-hourly-trends-in-monthly-ridership}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740767484720' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user week_of_month rides by time'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthridesbytime/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthridesbytime' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthridesbytime/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740767484720');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Peak Ridership:**
+
+    -   Highest in summer (June–August) and autumn (September–October).
+
+    -   Most rides occur on weekdays, especially **Wednesdays at 5 PM**.
+
+    -   Member customers dominate weekday ridership, while casual riders peak on weekends.
+
+    -   Weekend ridership is higher in warmer months but drops in winter.
+
+-   **Lowest Ridership:**
+
+    -   Lowest in winter (December–February) and early spring (March–April).
+
+    -   Least activity during early mornings (1–4 AM), especially on weekdays.
+
+    -   Casual customers have the lowest ridership in colder months.
+
+-   **Weekly Patterns:**
+
+    -   **Weekdays:** Strong commuter patterns (7–9 AM & 4–6 PM).
+
+    -   **Weekends:** More balanced activity, with midday peaks (10 AM–4 PM).
+
+-   **Seasonal Impact:**
+
+    -   Winter: Sharp decline, mostly necessity-driven trips.
+
+    -   Spring: Gradual rise, reflecting increased commuting & leisure.
+
+    -   Summer: Peak ridership due to longer days & warm weather.
+
+    -   Autumn: Gradual decline, recreational weekend rides tapering off.
+
+:::
+
+# Weekly and Hourly Trends in Monthly Durations {#sec-weekly-hourly-trends-in-monthly-durations}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740767626449' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic user week_of_month Average ride durations by time'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthAverageridedurationsbytime/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthAverageridedurationsbytime' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticusersweek_of_monthridesandridedurationsbasedonhourlyusuagepattern/AnalysisofCyclisticusersweek_of_monthAverageridedurationsbytime/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740767626449');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   **Longest Durations:**
+
+    -   Peak ride durations occur **late at night (1–4 AM)** across all seasons.
+
+    -   Casual customers have longer rides than members, especially in summer and spring.
+
+    -   Highest durations seen in **March (Monday at 4 AM)** and **June (Tuesday at 3 AM)**.
+
+-   **Shortest Durations:**
+
+    -   Found in commuter-heavy hours (7–9 AM, 4–6 PM).
+
+    -   Member rides are shorter due to time-sensitive commuting.
+
+    -   Lowest durations occur in **January (Sunday at 6 AM)** and **November (Tuesday at 3 AM)**.
+
+-   **Weekly Patterns:**
+
+    -   **Weekdays:** Shorter rides during commuting hours.
+
+    -   **Weekends:** Longer durations, especially in warmer months.
+
+-   **Seasonal Impact:**
+
+    -   Winter: Shorter durations, weather discourages long rides.
+
+    -   Spring & Summer: Longer leisure rides, especially on weekends.
+
+    -   Autumn: Gradual decline as temperatures drop.
+
+:::
+
+# Popular Cyclistic Stations by Total Rides, Member Type, and Usage Differences {#sec-cyclistic-popular-stations-based-on-total-rides-member-type-and-difference-in-member-usuage}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740778554181' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic popular stations total rides, member type rides and difference in member type usage'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationstotalridesmembertyperidesanddifferenceinmembertypeusuage/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationstotalridesmembertyperidesanddifferenceinmembertypeusuage' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationstotalridesmembertyperidesanddifferenceinmembertypeusuage/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740778554181');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   Station Popularity (Total Rides)- Identify the most and least station in the system
+
+-   Member type breakdown- To identify which station is commuter-driven (preferred by annual members) and which are favored by casual riders (one-time users, tourists, or leisure riders).
+
+-   Differences in Usage Patterns by Member Type- To analyze how member and casual rider usage varies at each station so as to identify which stations are preferred by different customer types.
+
+:::
+
+# Popular Cyclistic Stations by Bike Type and Member Type {#sec-cyclistic-popular-stations-based-on-bike-and-member-type}
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">     <div class='tableauPlaceholder' id='viz1740778794780' style='width: 80%; height: 650px;'>         <noscript>             <a href='#'>                 <img alt='Analysis of Cyclistic popular stations by bike type and customer type'                      src='https://public.tableau.com/static/images/An/AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationsbybiketypeandcustomertype/1_rss.png'                      style='border: none;' />             </a>         </noscript>         <object class='tableauViz' style='display:none;'>             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />             <param name='embed_code_version' value='3' />             <param name='site_root' value='' />             <param name='name' value='AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationsbybiketypeandcustomertype' />             <param name='tabs' value='no' />             <param name='toolbar' value='yes' />             <param name='static_image' value='https://public.tableau.com/static/images/An/AnalysisofCyclisticbike-sharestations/AnalysisofCyclisticpopularstationsbybiketypeandcustomertype/1.png' />             <param name='animate_transition' value='yes' />             <param name='display_static_image' value='yes' />             <param name='display_spinner' value='yes' />             <param name='display_overlay' value='yes' />             <param name='display_count' value='yes' />             <param name='language' value='en-US' />         </object>     </div> </div>  <script type='text/javascript'>     var divElement = document.getElementById('viz1740778794780');     var vizElement = divElement.getElementsByTagName('object')[0];      // Ensure the visualization resizes properly     vizElement.style.width = "100%";     vizElement.style.height = "650px";      var scriptElement = document.createElement('script');     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';     vizElement.parentNode.insertBefore(scriptElement, vizElement); </script>
+```
+
+:::{.notes}
+
+-   Station Popularity by Bike Type - identify stations with the highest total rides for each bike type, stations more popular for electric bike than classic bike and scooter friendly stations.
+
+-   Station Usage by Member Type - identify stations more popular among member vs. casual riders and if commuter-heavy stations are dominated by members and tourist attract more casual riders.
+
+-   Bike Preference Trends Across Stations - Do members mostly stick to classic bikes, while casual riders favor electric bikes or scooters, Are e-bikes more popular in stations located in areas with long-distance commutes? And Are scooters only used in certain parts of the city, such as near parks or entertainment areas?
+
+:::
+
+# Conclusion {#sec-conclusion}
+
+:::{.notes}
+
+1.  **How do annual members and casual riders use Cyclistic bikes differently?**
+
+**Annual Members**: They use the bikes primarily as a reliable transportation option. Their usage is concentrated during peak commuting hours—typically in the early mornings and late afternoons on weekdays—with short, purpose-driven trips. Members exhibit consistent year-round usage regardless of season, reflecting a routine, work-oriented pattern.
+
+**Casual Riders**: They tend to use the bikes for recreational or leisure purposes. Their usage peaks during warmer months and on weekends, with rides often occurring during midday and evenings. Casual riders generally take longer trips, suggesting exploration or recreational outings rather than efficient, goal-oriented commutes.
+
+2.  **Why would casual riders buy Cyclistic annual memberships?**
+
+**Cost Savings**: If a casual rider begins to use the bikes more frequently—especially during the favorable warmer months—an annual membership can offer significant cost savings over pay-per-ride pricing.
+
+**Convenience & Flexibility**: Memberships provide hassle-free access to bikes without the need for repeated transactions, making spontaneous or planned rides easier and more convenient.
+
+**Enhanced Experience**: Becoming a member might come with added perks like access to better-maintained bikes, priority during high-demand periods, or member-only promotions and events, which can enhance their overall riding experience.
+
+**Transition Opportunity**: As casual riders experience the convenience and benefits firsthand during peak seasons, they may find the membership a worthwhile investment even during off-peak periods.
+
+3.  **How can Cyclistic use digital media to influence casual riders to become members?**
+
+**Targeted Campaigns**: Use digital advertising and social media platforms to highlight the benefits of membership, such as cost savings, convenience, and exclusive perks. Tailor messaging to showcase real-life stories of riders who have transitioned from casual to member status and enjoy improved experiences.
+
+**Engaging Content:** Develop engaging content—like videos, info-graphics, and interactive posts—that illustrates how membership fits into an active, urban lifestyle. Feature scenic rides, community events, and testimonials to create an emotional connection with potential members.
+
+**Promotions & Trials:** Offer data-driven digital-exclusive promotions, limited-time discounts, or trial memberships through email campaigns and social media channels. These initiatives can encourage casual riders to try membership benefits risk-free, ultimately converting them to long-term users.
+
+**Influencer Partnerships:** Collaborate with local influencers and cycling enthusiasts who can authentically demonstrate how a Cyclistic membership enhances both daily commutes and leisurely rides, thereby building trust and aspirational appeal among casual users.
+
+:::
+
+# Recommendations {#sec-recommendation}
+
+------------------------------------------------------------------------
+
+-   **Seasonal Strategy & Winter Adaptation**
+
+-   **Customer-Specific Engagement**
+
+-   **Bike Type Optimization**
+
+-   **Time-Based Pricing & Accessibility**
+
+-   **Weekend & Leisure Growth**
+
+-   **Data-Driven Expansion**
+
+:::{.notes}
+
+**1. Seasonal Strategy & Winter Adaptation**
+
+-   **Winter Promotions:** Offer discounts or incentives for winter riding to maintain engagement, especially for casual riders.
+
+-   **Cold-Weather Infrastructure:** Improve bike availability at key commuter hubs with heated docking stations or better-maintained bike lanes.
+
+-   **Seasonal Fleet Adjustments:** Reduce fleet size in winter to cut costs and optimize bike maintenance.
+
+#### **2. Customer-Specific Engagement**
+
+-   **Member Retention:** Introduce loyalty rewards, faster checkout processes, and subscription perks to encourage continued commuter use.
+
+-   **Casual Rider Attraction:** Promote leisure packages, guided bike tours, or event-based rentals during peak tourist seasons.
+
+#### **3. Bike Type Optimization**
+
+-   **Expand Electric Bike Availability:** Since e-bikes are gaining traction, increasing their availability can appeal to both commuters and leisure riders.
+
+-   **Improve Scooter Marketing & Accessibility:** Address adoption barriers (pricing, parking spots, or awareness) to boost scooter utilization.
+
+#### **4. Time-Based Pricing & Accessibility**
+
+-   **Dynamic Pricing Model:** Implement peak-hour pricing to manage high demand and offer discounts during off-peak hours to encourage longer trips.
+
+-   **Workforce Partnerships:** Collaborate with companies to provide subsidized memberships for daily commuters.
+
+#### **5. Weekend & Leisure Growth**
+
+-   **Weekend Events & Packages:** Create recreational riding incentives like bundled pricing for groups, scenic ride routes, or themed bike rides.
+
+-   **Enhanced Midday Availability:** Ensure ample bikes are stationed at parks, tourist spots, and weekend hotspots to meet demand.
+
+#### **6. Data-Driven Expansion**
+
+-   **Strategic Docking Stations:** Expand docking stations near key commuter hubs, tourist areas, and recreational zones.
+
+-   **Real-Time Ride Insights:** Use mobile app notifications to guide users toward high-availability stations and suggest alternative bike options.
+
+:::
+
+------------------------------------------------------------------------
+
+-   **Enhance Bike Redistribution and Availability**
+
+-   **Optimize Pricing Strategies to Drive Membership Growth**
+
+-   **Strengthen Targeted Marketing and Membership Conversion Strategies**
+
+-   **Improve Infrastructure Planning Based on Usage Patterns**
+
+:::{.notes}
+
+#### **1. Enhance Bike Redistribution and Availability**
+
+-   Ensure **classic bikes are stocked at commuter-heavy stations** during peak hours to meet the demand from annual members.
+
+-   Place **more e-bikes and scooters at tourist and recreational areas** where casual riders are more likely to rent.
+
+-   Implement **real-time bike tracking and dynamic redistribution strategies** to balance bike availability across high-demand stations.
+
+#### **2. Optimize Pricing Strategies to Drive Membership Growth**
+
+-   Introduce **tiered pricing models** that offer discounts for frequent casual riders who may benefit from membership.
+
+-   Offer **seasonal promotions (e.g., summer discounts)** when casual ridership is highest, encouraging conversions.
+
+-   Adjust **e-bike pricing to incentivize members to upgrade plans**, ensuring revenue growth while catering to rider preferences.
+
+#### **3. Strengthen Targeted Marketing and Membership Conversion Strategies**
+
+-   Use **personalized app notifications and email campaigns** to encourage frequent casual riders to switch to membership (e.g., “You’ve taken 5 rides this month—save more with a membership!”).
+
+-   Place **physical and digital advertisements at high-casual-rider stations**, promoting the benefits of annual membership.
+
+-   Offer **limited-time trial memberships** to casual riders through the app and social media to increase conversions.
+
+#### **4. Improve Infrastructure Planning Based on Usage Patterns**
+
+-   Expand **docking stations in high-traffic leisure areas** to accommodate casual riders who take longer trips.
+
+-   Ensure **key commuter hubs are well-stocked during rush hours** to maintain efficiency for annual members.
+
+-   Use **seasonal data to predict demand fluctuations** and allocate resources accordingly, preventing bike shortages or surpluses.
+
+:::
+
+# Thank you
+
+# Q & A Session
