@@ -1,7 +1,13 @@
 # **CYCLISTIC BIKE-SHARE ANALYSIS CASE STUDY**
 
+Dr. Irtwange Nguwasen Blessing
+
+
+
 
 ## SCENARIO 
+
+![Cyclistic Bike Share](https://github.com/Dr-Irtwange-NB/Cyclistic-bike-share-analysis/blob/main/images/Cyclistic%20bike%20share.png?raw=true)
 
 As a junior data analyst working on the marketing analyst team at Cyclistic, a bike-share
 company in Chicago. The director of marketing believes the company’s future success
